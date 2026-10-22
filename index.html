@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Action Network | 2026 World Series Ticket Affordability</title><style>html,body{margin:0;padding:0;min-width:0;}body{background:#fff} .demo-parent{width:68%;max-width:920px;margin:0 auto;min-width:0;}</style></head><body><main class="demo-parent"><!-- ACTION NETWORK | 2026 WORLD SERIES AFFORDABILITY: standalone paste-ready HTML section -->
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Action Network | 2026 World Series Ticket Affordability</title><style>html,body{margin:0;padding:0;min-width:0;}body{background:#fff}.demo-parent{width:68%;max-width:920px;margin:0 auto;min-width:0;}</style></head><body><main class="demo-parent"><!-- ACTION NETWORK | 2026 WORLD SERIES AFFORDABILITY: standalone paste-ready HTML section -->
 <section class="anws-affordability" id="anws-affordability" aria-labelledby="anws-title">
   <div class="anws-container">
     <header class="anws-header anws-reveal">
@@ -126,7 +126,8 @@
       <p class="anws-eyebrow">LEAGUE-WIDE CONTEXT</p>
       <h3 id="anws-table-title">2026 postseason ticket-price increases across 12 teams</h3>
       <p>How much higher were postseason asking prices than each team's regular-season ticket benchmark? The Brewers recorded the third-highest relative increase in this dataset, while the Rays ranked fourth.</p>
-      <div class="anws-table-wrap">
+      <p class="anws-table-scroll-note">On smaller screens, scroll within the table to view all four columns.</p>
+      <div class="anws-table-wrap" role="region" aria-label="2026 postseason ticket price comparison; horizontally scrollable on small screens" tabindex="0">
         <table class="anws-table">
           <caption class="anws-sr-only">2026 playoff ticket price change compared with regular season, sorted highest to lowest increase</caption>
           <thead><tr><th scope="col">Team</th><th scope="col">Regular season</th><th scope="col">Postseason</th><th scope="col">Price increase</th></tr></thead>
@@ -514,9 +515,31 @@
 #anws-affordability .anws-submetric span { font-size:17px; line-height:1.55; }
 #anws-affordability .anws-table-section { margin:0 0 clamp(36px,3.5vw,58px); }
 #anws-affordability .anws-table-section>p:not(.anws-eyebrow) { margin-bottom:22px; }
-#anws-affordability .anws-table-wrap { width:100%; overflow:visible; }
+#anws-affordability .anws-table-wrap {
+  width:100%;
+  max-width:100%;
+  overflow-x:auto;
+  overflow-y:hidden;
+  -webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain;
+  border-radius:9px;
+  scrollbar-width:thin;
+  scrollbar-color:#97bea6 #eaf3ed;
+}
+#anws-affordability .anws-table-wrap:focus-visible {
+  outline:3px solid #1b9262;
+  outline-offset:3px;
+}
+#anws-affordability .anws-table-scroll-note {
+  display:none;
+  font-size:14px;
+  color:#365f4b;
+  margin:0 0 10px;
+}
 #anws-affordability .anws-table {
   width:100%;
+  min-width:670px;
+  table-layout:auto;
   border:1px solid #cddfd2;
   border-collapse:separate;
   border-spacing:0;
@@ -582,35 +605,12 @@
   #anws-affordability .anws-stage { padding:23px 21px; }
   #anws-affordability .anws-team { padding:19px 19px; }
   #anws-affordability .anws-verdict { padding:24px 21px; }
-  #anws-affordability .anws-table { border:none; border-radius:0; }
-  #anws-affordability .anws-table thead { display:none; }
-  #anws-affordability .anws-table,
-  #anws-affordability .anws-table tbody { display:block; width:100%; }
-  #anws-affordability .anws-table tr {
-    display:block;
-    width:100%;
-    margin:0 0 13px;
-    padding:16px 20px;
-    border:1px solid var(--anws-line);
-    border-radius:7px;
-    background:#fff;
-  }
-  #anws-affordability .anws-table td,
-  #anws-affordability .anws-table td:not(:first-child) {
-    display:block;
-    text-align:left;
-    white-space:normal;
-    padding:7px 0;
-    border:0;
-    font-size:16px;
-  }
-  #anws-affordability .anws-table td:first-child { font-size:18px; font-weight:800; margin-bottom:6px; }
-  #anws-affordability .anws-table td:not(:first-child)::before {
-    content:attr(data-label) ': ';
-    color:#475c4f;
-    font-size:15px;
-    font-weight:600;
-  }
+  /* Keep a genuine columnar table at every viewport width. Never turn rows into cards. */
+  #anws-affordability .anws-table-scroll-note { display:block; }
+  #anws-affordability .anws-table { min-width:670px; font-size:15px; }
+  #anws-affordability .anws-table th { padding:14px 16px; font-size:14px; }
+  #anws-affordability .anws-table td { padding:14px 16px; font-size:15px; }
+  #anws-affordability .anws-table td:first-child { font-weight:700; }
 }
 @media (max-width: 400px) {
   #anws-affordability .anws-container { padding:24px 14px 45px; }
